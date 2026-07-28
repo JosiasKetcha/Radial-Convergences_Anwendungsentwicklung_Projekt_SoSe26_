@@ -1,0 +1,62 @@
+.node {
+    fill:         #2e3a59;
+    stroke:       white;
+    stroke-width: 1;
+    filter: url(#f1);
+}
+
+.edge {
+    stroke-linecap: round;
+    opacity:        0.85;
+    pointer-events: stroke;
+}
+
+.edge-hidden {
+    opacity: 0.05;
+}
+
+.edge-highlighted {
+    opacity: 1;
+}
+
+.label {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size:    15px;
+    font-weight: bold;
+    fill:         #2e3a59;
+    stroke:       none;
+}
+
+.legend-label {
+    font-family:  Verdana, Geneva, Tahoma, sans-serif;
+    font-size:    11px;
+    font-weight:  550;
+    fill:         #2e3a59;
+    stroke:       none;
+}
+
+.selected{
+    fill: rgb(71, 255, 71);
+    stroke: black;
+    stroke-linejoin: round;
+    filter: url(#f1);
+}
+
+.edge-hidden {
+    opacity: 0.04;
+}
+
+/* Tooltip */
+#tooltip {
+    position:         absolute;
+    display:          none;
+    background:       white;
+    border:           1px solid #2e3a59;
+    border-radius:    4px;
+    padding:          6px 10px;
+    font-family:      Arial, sans-serif;
+    font-size:        12px;
+    color:            #2e3a59;
+    pointer-events:   none;
+    box-shadow:       2px 2px 6px rgba(0,0,0,0.15);
+}

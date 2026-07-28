@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Radial Convergences Prototyp</title>
+</head>
+<body>
+
+<svg xmlns='http://www.w3.org/2000/svg' width='700' height='700'>
+
+    <!-- Hintergrund -->
+    <rect x='0' y='0' width='700' height='700'
+          style='fill:white;stroke:#cccccc;stroke-width:1'/>
+
+    <!-- Filter für Schatten -->
+    <defs>
+        <filter id='f1' width='200%' height='200%'>
+            <feOffset in='SourceGraphic' result='offOut' dx='3' dy='3'/>
+            <feColorMatrix in='offOut' result='matrixOut' type='matrix'
+                values='0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0'/>
+            <feGaussianBlur in='matrixOut' result='blurOut' stdDeviation='3'/>
+            <feBlend in='SourceGraphic' mode='normal'/>
+        </filter>
+    </defs>
+
+    <!--
+        Knotenpositionen auf dem Kreis (R=250, Mittelpunkt cx=350, cy=350)
+        Winkel: -90° + i * (360°/8) beginnend oben
+
+        Formel zur Berechnung der Koordinaten
+        x = 350 + 250 * cos(angle)
+        y = 350 + 250 * sin(angle)
+
+        Deutschland  : 270° → (350, 100)
+        Frankreich   : 315° → (527, 177)
+        Italien      : 0°   → (600, 350)
+        Spanien      : 45°  → (527, 523)
+        Polen        : 90°  → (350, 600)
+        Niederlande  : 135° → (173, 523)
+        Belgien      : 180° → (100, 350)
+        Österreich   : 225° → (173, 177)
+    -->
+
+    <!-- Kanten > 110 Mrd. EUR : dunkelrot, dick -->
+    <!-- Deutschland - Frankreich : 209 -->
+    <line x1='350' y1='100' x2='527' y2='177'
+          style='stroke:#800000;stroke-width:9;stroke-linecap:round'/>
+    <!-- Deutschland - Polen : 172 -->
+    <line x1='350' y1='100' x2='350' y2='600'
+          style='stroke:#800000;stroke-width:7;stroke-linecap:round'/>
+    <!-- Deutschland - Niederlande : 195 -->
+    <line x1='350' y1='100' x2='173' y2='523'
+          style='stroke:#800000;stroke-width:8;stroke-linecap:round'/>
+    <!-- Deutschland - Italien : 120 -->
+    <line x1='350' y1='100' x2='600' y2='350'
+          style='stroke:#800000;stroke-width:5;stroke-linecap:round'/>
+    <!-- Niederlande - Belgien : 210 -->
+    <line x1='173' y1='523' x2='100' y2='350'
+          style='stroke:#800000;stroke-width:9;stroke-linecap:round'/>
+    <!-- Frankreich - Italien : 105 -->
+    <line x1='527' y1='177' x2='600' y2='350'
+          style='stroke:#ff0000;stroke-width:5;stroke-linecap:round'/>
+
+    <!-- Kanten <= 110 Mrd. EUR : rot, mittel -->
+    <!-- Deutschland - Belgien : 95 -->
+    <line x1='350' y1='100' x2='100' y2='350'
+          style='stroke:#ff0000;stroke-width:4;stroke-linecap:round'/>
+    <!-- Frankreich - Spanien : 83 -->
+    <line x1='527' y1='177' x2='527' y2='523'
+          style='stroke:#ff0000;stroke-width:4;stroke-linecap:round'/>
+    <!-- Frankreich - Belgien : 85 -->
+    <line x1='527' y1='177' x2='100' y2='350'
+          style='stroke:#ff0000;stroke-width:4;stroke-linecap:round'/>
+
+    <!-- Kanten <= 60 Mrd. EUR : orange, dünn -->
+    <!-- Italien - Spanien : 55 -->
+    <line x1='600' y1='350' x2='527' y2='523'
+          style='stroke:#ff7700;stroke-width:3;stroke-linecap:round'/>
+    <!-- Italien - Österreich : 48 -->
+    <line x1='600' y1='350' x2='173' y2='177'
+          style='stroke:#ff7700;stroke-width:3;stroke-linecap:round'/>
+    <!-- Spanien - Polen : 30 -->
+    <line x1='527' y1='523' x2='350' y2='600'
+          style='stroke:#ff7700;stroke-width:2;stroke-linecap:round'/>
+
+    <!-- Knoten (Kreise) mit Schatten -->
+    <circle cx='350' cy='100' r='10' style='fill:#2e3a59;stroke:white;stroke-width:2;filter:url(#f1)'/>
+    <circle cx='527' cy='177' r='10' style='fill:#2e3a59;stroke:white;stroke-width:2;filter:url(#f1)'/>
+    <circle cx='600' cy='350' r='10' style='fill:#2e3a59;stroke:white;stroke-width:2;filter:url(#f1)'/>
+    <circle cx='527' cy='523' r='10' style='fill:#2e3a59;stroke:white;stroke-width:2;filter:url(#f1)'/>
+    <circle cx='350' cy='600' r='10' style='fill:#2e3a59;stroke:white;stroke-width:2;filter:url(#f1)'/>
+    <circle cx='173' cy='523' r='10' style='fill:#2e3a59;stroke:white;stroke-width:2;filter:url(#f1)'/>
+    <circle cx='100' cy='350' r='10' style='fill:#2e3a59;stroke:white;stroke-width:2;filter:url(#f1)'/>
+    <circle cx='173' cy='177' r='10' style='fill:#2e3a59;stroke:white;stroke-width:2;filter:url(#f1)'/>
+
+    <!-- Labels -->
+    <text x='350' y='75'  style='font-family:verdana;font-size:13px;fill:#2e3a59;font-weight:bold;text-anchor:middle'>Deutschland</text>
+    <text x='545' y='165' style='font-family:verdana;font-size:13px;fill:#2e3a59;font-weight:bold;text-anchor:start'>Frankreich</text>
+    <text x='620' y='355' style='font-family:verdana;font-size:13px;fill:#2e3a59;font-weight:bold;text-anchor:start'>Italien</text>
+    <text x='545' y='540' style='font-family:verdana;font-size:13px;fill:#2e3a59;font-weight:bold;text-anchor:start'>Spanien</text>
+    <text x='350' y='630' style='font-family:verdana;font-size:13px;fill:#2e3a59;font-weight:bold;text-anchor:middle'>Polen</text>
+    <text x='155' y='540' style='font-family:verdana;font-size:13px;fill:#2e3a59;font-weight:bold;text-anchor:end'>Niederlande</text>
+    <text x='80'  y='355' style='font-family:verdana;font-size:13px;fill:#2e3a59;font-weight:bold;text-anchor:end'>Belgien</text>
+    <text x='155' y='165' style='font-family:verdana;font-size:13px;fill:#2e3a59;font-weight:bold;text-anchor:end'>Österreich</text>
+
+    
+</svg>
+
+</body>
+</html>
