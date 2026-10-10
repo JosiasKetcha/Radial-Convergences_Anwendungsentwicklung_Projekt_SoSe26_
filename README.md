@@ -2,6 +2,8 @@
 
 Eine interaktive Visualisierung der Handelsbeziehungen zwischen acht europäischen Ländern im Jahr 2023. Die Länder liegen als Knoten auf einem Kreis, die Verbindungslinien zeigen das Handelsvolumen in Milliarden Euro. Das Diagramm ist komplett in reinem JavaScript und SVG gezeichnet, ohne externe Bibliotheken.
 
+**Online:** https://josiasketcha.github.io/Radial-Convergences_Anwendungsentwicklung_Projekt_SoSe26_/RadialConvergences.html
+
 > **Kontext:** Einzelprojekt im Modul **Anwendungsentwicklung**, Hochschule Worms, Sommersemester 2026.
 
 ![Screenshot des Radial-Convergences-Diagramms](docs/screenshot.png)
